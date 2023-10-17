@@ -1,0 +1,52 @@
+body {
+  margin: 5vh;
+}
+
+form {
+  margin-top: 20px;
+  max-width: 400px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #6b96b5;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4d6d84;;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 2px; /* Задаем радиус скругления углов */
+  overflow: clip; 
+}
+
+th, td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #d3d3d3;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
