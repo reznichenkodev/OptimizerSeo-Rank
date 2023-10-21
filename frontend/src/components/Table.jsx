@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Table = ({ analysisResult, inputDomain }) => {
   if (!analysisResult) {
@@ -17,13 +17,16 @@ const Table = ({ analysisResult, inputDomain }) => {
       ));
     } else if (analysisResult.links) {
       // Обработка ссылок
-      return analysisResult.links.map((link, index, redirectUrl) => (
+      return analysisResult.links.map((link, index) => (
         <tr key={index}>
           <td>{link.url}</td>
           <td>{link.redirectUrl}</td>
           <td>{link.redirectType}</td>
         </tr>
       ));
+    }
+    else if (analysisResult) {
+      return <p>Time taken to load page: {analysisResult.loadTime} second</p>
     }
     return null;
   };
@@ -44,50 +47,31 @@ const Table = ({ analysisResult, inputDomain }) => {
         <tr>
           <th>Url</th>
           <th>RedirectUrl</th>
-          <th>redirectType</th>
+          <th>Response</th>
         </tr>
       );
     }
     return null;
   };
 
-  const isAbsolute = (url) => {
-    try {
-      new URL(url);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
-
   return (
     <div>
-      <h2>{analysisResult.metaTags ? 'Meta Tags' : 'Links'} Analysis</h2>
+      <h2>{analysisResult.metaTags ? "Meta Tags" : "Links"} Analysis</h2>
       <table>
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>
         {analysisResult.metaTags && (
           <tfoot>
             <tr>
-              <td colSpan="3">Total Characters</td>
-            </tr>
-            <tr>
-              <td colSpan="3">{analysisResult.characterCount}</td>
+              <td colSpan="3">Total Characters: {analysisResult.characterCount}</td>
             </tr>
           </tfoot>
         )}
-      </table>
+      </table> 
     </div>
   );
 };
 
-
-
-
 export default Table;
-
-
-
-
 
 

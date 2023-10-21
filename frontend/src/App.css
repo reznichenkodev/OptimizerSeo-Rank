@@ -27,17 +27,19 @@ button {
 }
 
 button:hover {
-  background-color: #4d6d84;;
+  background-color: #4d6d84;
 }
-table {
+
+table, tfoot {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
   border-radius: 2px; /* Задаем радиус скругления углов */
-  overflow: clip; 
+  overflow: clip;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #000000;
   padding: 8px;
   text-align: left;

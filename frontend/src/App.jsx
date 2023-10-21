@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import Form from './components/Form';
-import Table from './components/Table';
-import '/Users/danilreznicenko/seo-analysis/frontend/src/App.css'
+import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import Form from "./components/Form";
+import Table from "./components/Table";
+// import AnalyzeTimeComponent from "./components/AnalyzeTimeComponent";
+import "/Users/danilreznicenko/seo-analysis/frontend/src/App.css";
 
 function App() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
   const [linksAnalysisResult, setLinksAnalysisResult] = useState(null);
+  const [timeAnalysisResult, setTimeAnalysisResult] = useState(null);
 
   return (
     <div className="App">
@@ -16,39 +18,33 @@ function App() {
         <TabList>
           <Tab>Meta Tags</Tab>
           <Tab>Links</Tab>
+          <Tab>Page Load Time</Tab>
         </TabList>
 
         <TabPanel>
-          <Form setAnalysisResult={setMetaAnalysisResult} endpoint="/api/analyze-meta" />
+          <Form
+            setAnalysisResult={setMetaAnalysisResult}
+            endpoint="/api/analyze-meta"
+          />
           {metaAnalysisResult && <Table analysisResult={metaAnalysisResult} />}
         </TabPanel>
 
         <TabPanel>
-  <Form setAnalysisResult={setLinksAnalysisResult} endpoint="/api/analyze-links" />
-  {linksAnalysisResult && (
-    <div>
-      <h2>Links Analysis</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>URL</th>
-            <th>Redirect URL</th>
-            <th>Redirect Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {linksAnalysisResult.map((link, index) => (
-            <tr key={index}>
-              <td>{link.url}</td>
-              <td>{link.redirectUrl}</td>
-              <td>{link.redirectType}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )}
-</TabPanel>
+          <Form
+            setAnalysisResult={setLinksAnalysisResult}
+            endpoint="/api/analyze-links"
+          />
+          {linksAnalysisResult && <Table analysisResult={linksAnalysisResult} />}
+        </TabPanel>
+        <TabPanel>
+          <Form
+          setAnalysisResult={setTimeAnalysisResult}
+            endpoint="/api/analyze-time"
+          />
+         {timeAnalysisResult && <Table analysisResult={timeAnalysisResult} />}
+         
+          {/* <AnalyzeTimeComponent /> */}
+        </TabPanel>
       </Tabs>
     </div>
   );
