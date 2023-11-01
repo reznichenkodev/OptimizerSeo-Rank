@@ -15,7 +15,7 @@ const Table = ({ analysisResult, inputDomain }) => {
           <td>{tag.content ? tag.content.length : 0}</td>
         </tr>
       ));
-    } else if (analysisResult.links) {
+    } if (analysisResult.links) {
       // Обработка ссылок
       return analysisResult.links.map((link, index) => (
         <tr key={index}>
@@ -24,9 +24,20 @@ const Table = ({ analysisResult, inputDomain }) => {
           <td>{link.redirectType}</td>
         </tr>
       ));
-    }
-    else if (analysisResult) {
-      return <p>Time taken to load page: {analysisResult.loadTime} second</p>
+    } if (analysisResult.loadTime) {
+
+      return <tr>
+    <td><p>Time taken to load page: {analysisResult.loadTime} second</p></td>
+  </tr>
+      
+    } else if (analysisResult.index) {
+      // Обработка ссылок
+      return analysisResult.index.map((link, index) => (
+        <tr key={index}>
+          <td>{link.url}</td>
+          {/* <td>{link.indexed ? true : false}</td> */}
+        </tr>
+      ));
     }
     return null;
   };
@@ -41,7 +52,7 @@ const Table = ({ analysisResult, inputDomain }) => {
           <th>Character Count</th>
         </tr>
       );
-    } else if (analysisResult.links) {
+    } if (analysisResult.links) {
       // Заголовок для ссылок
       return (
         <tr>
@@ -50,28 +61,37 @@ const Table = ({ analysisResult, inputDomain }) => {
           <th>Response</th>
         </tr>
       );
+      
+    }  if (analysisResult.index) {
+      // Заголовок для index ссылок
+      return (
+        <tr>
+          <th>Url</th>
+          <th>Indexed</th>
+        </tr>
+      );
     }
     return null;
   };
 
   return (
     <div>
-      <h2>{analysisResult.metaTags ? "Meta Tags" : "Links"} Analysis</h2>
+      <h2>{analysisResult.metaTags ? "Meta Tags" : "Links" } Analysis</h2>
       <table>
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>
         {analysisResult.metaTags && (
           <tfoot>
             <tr>
-              <td colSpan="3">Total Characters: {analysisResult.characterCount}</td>
+              <td colSpan="3">
+                Total Characters: {analysisResult.characterCount}
+              </td>
             </tr>
           </tfoot>
         )}
-      </table> 
+      </table>
     </div>
   );
 };
 
 export default Table;
-
-

@@ -3,13 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Form from "./components/Form";
 import Table from "./components/Table";
-// import AnalyzeTimeComponent from "./components/AnalyzeTimeComponent";
 import "/Users/danilreznicenko/seo-analysis/frontend/src/App.css";
 
 function App() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
   const [linksAnalysisResult, setLinksAnalysisResult] = useState(null);
   const [timeAnalysisResult, setTimeAnalysisResult] = useState(null);
+  const [indexAnalysisResult, setIndexAnalysisResult] = useState(null);
 
   return (
     <div className="App">
@@ -19,6 +19,7 @@ function App() {
           <Tab>Meta Tags</Tab>
           <Tab>Links</Tab>
           <Tab>Page Load Time</Tab>
+          <Tab>Index pages</Tab>
         </TabList>
 
         <TabPanel>
@@ -42,8 +43,14 @@ function App() {
             endpoint="/api/analyze-time"
           />
          {timeAnalysisResult && <Table analysisResult={timeAnalysisResult} />}
-         
-          {/* <AnalyzeTimeComponent /> */}
+        </TabPanel>
+
+        <TabPanel>
+          <Form
+          setAnalysisResult={setIndexAnalysisResult}
+            endpoint="/api/analyze-robots"
+          />
+         {indexAnalysisResult && <Table analysisResult={indexAnalysisResult} />}
         </TabPanel>
       </Tabs>
     </div>

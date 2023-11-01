@@ -5,8 +5,6 @@ class AnalyzeTime {
   async index(req, res) {
     try {
       const url = req.body.url;
-
-      // Создаем объект для измерения времени
       const analyzeTime = {
         start: null,
         stop: null,
@@ -16,16 +14,15 @@ class AnalyzeTime {
         stopTimer() {
           this.stop = Date.now();
           const elapsed = (this.stop - this.start) / 1000;
-          // console.log(`Time taken to load page: ${elapsed} seconds`);
         },
       };
 
-      analyzeTime.startTimer(); // Запускаем таймер
+      analyzeTime.startTimer(); 
 
       const { data } = await axios.get(url);
       const $ = cheerio.load(data);
 
-      analyzeTime.stopTimer(); // Останавливаем таймер после загрузки страницы
+      analyzeTime.stopTimer(); 
 
       const analysisResult = {
         loadTime:(analyzeTime.stop - analyzeTime.start) / 1000,
