@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Form from "./components/Form";
 import Table from "./components/Table";
-import "/Users/danilreznicenko/seo-analysis/frontend/src/App.css";
+import "../src/App.css";
 
 function App() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
@@ -18,8 +18,8 @@ function App() {
         <TabList>
           <Tab>Meta Tags</Tab>
           <Tab>Links</Tab>
-          <Tab>Page Load Time</Tab>
           <Tab>Index pages</Tab>
+          <Tab>Page Load Time</Tab>
         </TabList>
 
         <TabPanel>
@@ -35,22 +35,25 @@ function App() {
             setAnalysisResult={setLinksAnalysisResult}
             endpoint="/api/analyze-links"
           />
-          {linksAnalysisResult && <Table analysisResult={linksAnalysisResult} />}
+          {linksAnalysisResult && (
+            <Table analysisResult={linksAnalysisResult} />
+          )}
         </TabPanel>
         <TabPanel>
           <Form
-          setAnalysisResult={setTimeAnalysisResult}
-            endpoint="/api/analyze-time"
-          />
-         {timeAnalysisResult && <Table analysisResult={timeAnalysisResult} />}
-        </TabPanel>
-
-        <TabPanel>
-          <Form
-          setAnalysisResult={setIndexAnalysisResult}
+            setAnalysisResult={setIndexAnalysisResult}
             endpoint="/api/analyze-robots"
           />
-         {indexAnalysisResult && <Table analysisResult={indexAnalysisResult} />}
+          {indexAnalysisResult && (
+            <Table analysisResult={indexAnalysisResult} />
+          )}
+        </TabPanel>
+        <TabPanel>
+          <Form
+            setAnalysisResult={setTimeAnalysisResult}
+            endpoint="/api/analyze-time"
+          />
+          {timeAnalysisResult && <Table analysisResult={timeAnalysisResult} />}
         </TabPanel>
       </Tabs>
     </div>

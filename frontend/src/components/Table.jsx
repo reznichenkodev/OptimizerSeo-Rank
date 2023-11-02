@@ -30,12 +30,12 @@ const Table = ({ analysisResult, inputDomain }) => {
     <td><p>Time taken to load page: {analysisResult.loadTime} second</p></td>
   </tr>
       
-    } else if (analysisResult.index) {
+    } else if (analysisResult.robots) {
       // Обработка ссылок
-      return analysisResult.index.map((link, index) => (
+      return analysisResult.robots.map((link, index) => (
         <tr key={index}>
           <td>{link.url}</td>
-          {/* <td>{link.indexed ? true : false}</td> */}
+          <td>{link.indexed}</td>
         </tr>
       ));
     }
@@ -62,7 +62,7 @@ const Table = ({ analysisResult, inputDomain }) => {
         </tr>
       );
       
-    }  if (analysisResult.index) {
+    }  if (analysisResult.robots) {
       // Заголовок для index ссылок
       return (
         <tr>

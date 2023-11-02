@@ -7,9 +7,9 @@ export default async function checkIndexing(links) {
     try {
       const response = await axios.get(link);
       const isIndexed = response.data.includes('<meta name="robots" content="noindex">') ? false : true;
-      results.push({ url: link, indexed: isIndexed });
+      results.push({ url: link, indexed: 'Indexed' });
     } catch (error) {
-      results.push({ url: link, indexed: false });
+      results.push({ url: link, indexed: 'false' });
     }
   }
 

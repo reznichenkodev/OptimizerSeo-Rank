@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import checkIndexing from "/Users/danilreznicenko/seo-analysis/untils/analyzeRobots.js";
+import checkIndexing from "../untils/analyzeRobots.js";
 import axios from "axios";
 
 class AnalyzeRobots {
@@ -20,9 +20,9 @@ class AnalyzeRobots {
 
       const validLinks = await checkIndexing(links);
 
-      const analysisResult = { index: validLinks };
+      const analysisResult = { robots: validLinks };
 
-      console.log(analysisResult);
+      // console.log(analysisResult);
 
       res.json(analysisResult);
     } catch (error) {

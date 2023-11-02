@@ -1,7 +1,7 @@
-import AnalyzeLink from "/Users/danilreznicenko/seo-analysis/contorollers/link.controllers.js";
-import AnalyzeMeta from "/Users/danilreznicenko/seo-analysis/contorollers/meta.controllers.js";
-import AnalyzeTime from "/Users/danilreznicenko/seo-analysis/contorollers/time.controllers.js";
-import AnalyzeRobots from "/Users/danilreznicenko/seo-analysis/contorollers/robots.controllers.js"
+import AnalyzeLink from "../contorollers/link.controllers.js";
+import AnalyzeMeta from "../contorollers/meta.controllers.js";
+import AnalyzeTime from "../contorollers/time.controllers.js";
+import AnalyzeRobots from "../contorollers/robots.controllers.js"
 
 import express from "express"
 const router = express.Router();
