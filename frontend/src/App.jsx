@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Form from "./components/Form";
+import Form from "./components/Form/Form";
 import LinkTable from "./components/Table/link_table";
 import MetaTable from "./components/Table/meta_table";
 import RobotsTable from "./components/Table/robots_table";
