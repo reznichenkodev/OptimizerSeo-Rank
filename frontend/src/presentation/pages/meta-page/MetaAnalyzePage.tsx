@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import ReqForm from "../components/Forms/request-form";
-import LinkTable from "../components/Table/link";
-import MetaTable from "../components/Table/meta";
-import RobotsTable from "../components/Table/robots";
-import TimeTable from "../components/Table/time";
-import "../pages/MetaAnalyzePage";
+import ReqForm from "../../components/Forms/request-form.tsx";
+import LinkTable from "../../components/Table/link.tsx";
+import MetaTable from "../../components/Table/meta.tsx";
+import RobotsTable from "../../components/Table/robots.tsx";
+import TimeTable from "../../components/Table/time.tsx";
+import "./MetaAnalyzePage.css";
 
 function MetaAnalyzePage() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);

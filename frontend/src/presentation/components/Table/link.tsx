@@ -1,6 +1,6 @@
 import React from "react";
 
-const LinkTable = ({ analysisResult, inputDomain }) => {
+const LinkTable = ({ analysisResult }) => {
   if (!analysisResult) {
     return null;
   }
