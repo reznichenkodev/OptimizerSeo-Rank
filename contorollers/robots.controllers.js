@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import checkIndexing from "../untils/analyzeRobots.js";
+import checkIndexing from "../utils/analyzeRobots.js";
 import axios from "axios";
 
 class AnalyzeRobots {

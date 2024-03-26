@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import analyzeLinks from "../untils/analyzeLinks.js";
+import analyzeLinks from "../utils/analyzeLinks.js";
 import axios from "axios";
 
 class AnalyzeLink {

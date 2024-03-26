@@ -17,15 +17,15 @@ class AnalyzeTime {
         },
       };
 
-      analyzeTime.startTimer(); 
+      analyzeTime.startTimer();
 
       const { data } = await axios.get(url);
       const $ = cheerio.load(data);
 
-      analyzeTime.stopTimer(); 
+      analyzeTime.stopTimer();
 
       const analysisResult = {
-        loadTime:(analyzeTime.stop - analyzeTime.start) / 1000,
+        loadTime: (analyzeTime.stop - analyzeTime.start) / 1000,
       };
       // console.log(analysisResult)
       res.json(analysisResult);

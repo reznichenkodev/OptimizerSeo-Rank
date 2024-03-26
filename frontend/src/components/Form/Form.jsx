@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../Form/Form.css";
 
 const Form = ({ setAnalysisResult, endpoint }) => {
   const [url, setUrl] = useState("");

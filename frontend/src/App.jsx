@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import Form from "./components/Form";
-import Table from "./components/Table";
+import Form from "./components/Form/Form";
+import LinkTable from "./components/Table/link_table";
+import MetaTable from "./components/Table/meta_table";
+import RobotsTable from "./components/Table/robots_table";
+import TimeTable from "./components/Table/time_table";
 import "../src/App.css";
 
 function App() {
@@ -27,7 +30,9 @@ function App() {
             setAnalysisResult={setMetaAnalysisResult}
             endpoint="/api/analyze-meta"
           />
-          {metaAnalysisResult && <Table analysisResult={metaAnalysisResult} />}
+          {metaAnalysisResult && (
+            <MetaTable analysisResult={metaAnalysisResult} />
+          )}
         </TabPanel>
 
         <TabPanel>
@@ -36,7 +41,7 @@ function App() {
             endpoint="/api/analyze-links"
           />
           {linksAnalysisResult && (
-            <Table analysisResult={linksAnalysisResult} />
+            <LinkTable analysisResult={linksAnalysisResult} />
           )}
         </TabPanel>
         <TabPanel>
@@ -45,7 +50,7 @@ function App() {
             endpoint="/api/analyze-robots"
           />
           {indexAnalysisResult && (
-            <Table analysisResult={indexAnalysisResult} />
+            <RobotsTable analysisResult={indexAnalysisResult} />
           )}
         </TabPanel>
         <TabPanel>
@@ -53,7 +58,9 @@ function App() {
             setAnalysisResult={setTimeAnalysisResult}
             endpoint="/api/analyze-time"
           />
-          {timeAnalysisResult && <Table analysisResult={timeAnalysisResult} />}
+          {timeAnalysisResult && (
+            <TimeTable analysisResult={timeAnalysisResult} />
+          )}
         </TabPanel>
       </Tabs>
     </div>
