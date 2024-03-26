@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/meta" element={<MetaAnalyzePage />} />
+        <Route path="/analyze" element={<MetaAnalyzePage />} />
       </Routes>
     </Router>
   );
