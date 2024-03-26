@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Form/Form.css";
+import "../Forms/form.css";
 
-const Form = ({ setAnalysisResult, endpoint }) => {
+const ReqForm = ({ setAnalysisResult, endpoint }) => {
   const [url, setUrl] = useState("");
 
   const handleSubmit = async (e) => {
@@ -32,4 +32,4 @@ const Form = ({ setAnalysisResult, endpoint }) => {
   );
 };
 
-export default Form;
+export default ReqForm;
