@@ -27,7 +27,6 @@ const LinkTable = ({ analysisResult }) => {
 
   return (
     <div>
-      <h2>Links Analysis</h2>
       <table>
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>

@@ -6,8 +6,9 @@ import LinkTable from "../../components/Table/link.tsx";
 import MetaTable from "../../components/Table/meta.tsx";
 import RobotsTable from "../../components/Table/robots.tsx";
 import TimeTable from "../../components/Table/time.tsx";
+import PieCharts from "../../components/PieGraph/pie-graph.tsx";
 import "./MetaAnalyzePage.css";
-import PieCharts from "../../components/PieGraph/pie-graph.jsx";
+import { UrlCounter } from "../../components/PieGraph/utils/url-counter.tsx";
 
 function MetaAnalyzePage() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
@@ -24,7 +25,7 @@ function MetaAnalyzePage() {
 
   return (
     <div className="App">
-      <h1>SEO Analyze</h1>
+      <h1>Analyze service</h1>
       <Tabs>
         <TabList>
           <Tab>Meta Tags</Tab>
@@ -38,12 +39,12 @@ function MetaAnalyzePage() {
             setAnalysisResult={setMetaAnalysisResult}
             endpoint="/api/analyze-meta"
           />
-
           {metaAnalysisResult && (
             <>
               <div className="table-charts">
-                <PieCharts data={data} />
+                {/* <UrlCounter analysisResult={metaAnalysisResult} /> */}
                 <MetaTable analysisResult={metaAnalysisResult} />
+                <PieCharts data={data} />
               </div>
             </>
           )}
@@ -55,7 +56,13 @@ function MetaAnalyzePage() {
             endpoint="/api/analyze-links"
           />
           {linksAnalysisResult && (
-            <LinkTable analysisResult={linksAnalysisResult} />
+            <>
+              <div className="table-charts">
+                {/* <UrlCounter analysisResult={linksAnalysisResult} /> */}
+                <LinkTable analysisResult={linksAnalysisResult} />
+                <PieCharts data={UrlCounter(linksAnalysisResult)} />
+              </div>
+            </>
           )}
         </TabPanel>
         <TabPanel>
@@ -64,7 +71,12 @@ function MetaAnalyzePage() {
             endpoint="/api/analyze-robots"
           />
           {indexAnalysisResult && (
-            <RobotsTable analysisResult={indexAnalysisResult} />
+            <>
+              <div className="table-charts">
+                <RobotsTable analysisResult={indexAnalysisResult} />
+                <PieCharts data={data} />
+              </div>
+            </>
           )}
         </TabPanel>
         <TabPanel>
@@ -73,7 +85,12 @@ function MetaAnalyzePage() {
             endpoint="/api/analyze-time"
           />
           {timeAnalysisResult && (
-            <TimeTable analysisResult={timeAnalysisResult} />
+            <>
+              <div className="table-charts">
+                <TimeTable analysisResult={timeAnalysisResult} />
+                <PieCharts data={data} />
+              </div>
+            </>
           )}
         </TabPanel>
       </Tabs>
