@@ -7,12 +7,20 @@ import MetaTable from "../../components/Table/meta.tsx";
 import RobotsTable from "../../components/Table/robots.tsx";
 import TimeTable from "../../components/Table/time.tsx";
 import "./MetaAnalyzePage.css";
+import PieCharts from "../../components/PieGraph/pie-graph.jsx";
 
 function MetaAnalyzePage() {
   const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
   const [linksAnalysisResult, setLinksAnalysisResult] = useState(null);
   const [timeAnalysisResult, setTimeAnalysisResult] = useState(null);
   const [indexAnalysisResult, setIndexAnalysisResult] = useState(null);
+
+  const data = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+  ];
 
   return (
     <div className="App">
@@ -30,6 +38,7 @@ function MetaAnalyzePage() {
             setAnalysisResult={setMetaAnalysisResult}
             endpoint="/api/analyze-meta"
           />
+          <PieCharts data={data} />
           {metaAnalysisResult && (
             <MetaTable analysisResult={metaAnalysisResult} />
           )}
