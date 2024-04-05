@@ -11,17 +11,31 @@ import "./MetaAnalyzePage.css";
 import { UrlCounter } from "../../components/PieGraph/utils/url-counter.tsx";
 
 function MetaAnalyzePage() {
-  const [metaAnalysisResult, setMetaAnalysisResult] = useState(null);
-  const [linksAnalysisResult, setLinksAnalysisResult] = useState(null);
-  const [timeAnalysisResult, setTimeAnalysisResult] = useState(null);
-  const [indexAnalysisResult, setIndexAnalysisResult] = useState(null);
+  interface AnalysisResults {
+    meta: any;
+    links?: any;
+    robots: any;
+    time: any;
+  }
 
-  const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-  ];
+  const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
+    meta: undefined,
+    links: undefined,
+    robots: undefined,
+    time: undefined,
+  });
+
+  const data = [{ name: "Group A", value: 1222 }];
+
+  const setTabAnalysisResult = (tab: string, result: string) => {
+    setAnalysisResults((prevResults) => ({
+      ...prevResults,
+      [tab]: result,
+    }));
+  };
+  console.log(analysisResults);
+  // console.log(analysisResults.meta.metaTags.length);
+  // console.log(analysisResults.links.links.length);
 
   return (
     <div className="App">
@@ -36,15 +50,17 @@ function MetaAnalyzePage() {
 
         <TabPanel>
           <ReqForm
-            setAnalysisResult={setMetaAnalysisResult}
+            setAnalysisResult={(result: string) =>
+              setTabAnalysisResult("meta", result)
+            }
             endpoint="/api/analyze-meta"
           />
-          {metaAnalysisResult && (
+          {analysisResults.meta && (
             <>
               <div className="table-charts">
-                {/* <UrlCounter analysisResult={metaAnalysisResult} /> */}
-                <MetaTable analysisResult={metaAnalysisResult} />
+                <MetaTable analysisResult={analysisResults.meta} />
                 <PieCharts data={data} />
+                {analysisResults.meta.metaTags.length}
               </div>
             </>
           )}
@@ -52,42 +68,49 @@ function MetaAnalyzePage() {
 
         <TabPanel>
           <ReqForm
-            setAnalysisResult={setLinksAnalysisResult}
+            setAnalysisResult={(result: string) =>
+              setTabAnalysisResult("links", result)
+            }
             endpoint="/api/analyze-links"
           />
-          {linksAnalysisResult && (
+          {analysisResults.links && (
             <>
               <div className="table-charts">
-                {/* <UrlCounter analysisResult={linksAnalysisResult} /> */}
-                <LinkTable analysisResult={linksAnalysisResult} />
-                <PieCharts data={UrlCounter(linksAnalysisResult)} />
+                <LinkTable analysisResult={analysisResults.links} />
+                <PieCharts data={data} />
+                {analysisResults.links.links.length}
               </div>
             </>
           )}
         </TabPanel>
         <TabPanel>
           <ReqForm
-            setAnalysisResult={setIndexAnalysisResult}
+            setAnalysisResult={(result: string) =>
+              setTabAnalysisResult("robots", result)
+            }
             endpoint="/api/analyze-robots"
           />
-          {indexAnalysisResult && (
+          {analysisResults.robots && (
             <>
               <div className="table-charts">
-                <RobotsTable analysisResult={indexAnalysisResult} />
+                <RobotsTable analysisResult={analysisResults.robots} />
                 <PieCharts data={data} />
+                {analysisResults.robots.robots.length}
               </div>
             </>
           )}
         </TabPanel>
         <TabPanel>
           <ReqForm
-            setAnalysisResult={setTimeAnalysisResult}
+            setAnalysisResult={(result: string) =>
+              setTabAnalysisResult("time", result)
+            }
             endpoint="/api/analyze-time"
           />
-          {timeAnalysisResult && (
+          {analysisResults.time && (
             <>
               <div className="table-charts">
-                <TimeTable analysisResult={timeAnalysisResult} />
+                <TimeTable analysisResult={analysisResults.time} />
                 <PieCharts data={data} />
               </div>
             </>

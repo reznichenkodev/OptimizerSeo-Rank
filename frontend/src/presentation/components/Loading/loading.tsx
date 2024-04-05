@@ -7,8 +7,8 @@ const Loading = () => (
     <OrbitProgress
       variant="track-disc"
       color="#4d4766"
-      size="large"
-      text="Loading"
+      size="medium"
+      text=""
       textColor="#000000"
     />
   </div>

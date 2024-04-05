@@ -4,10 +4,6 @@ import { PieChart, Pie, Cell } from "recharts";
 const PieCharts = ({ data }) => {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-  if (!data || !Array.isArray(data)) {
-    return null; // or return a default value or message
-  }
-
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
