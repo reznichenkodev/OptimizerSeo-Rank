@@ -6,13 +6,17 @@ export default async function checkIndexing(links) {
   for (const link of links) {
     try {
       const response = await axios.get(link);
-      const isIndexed = response.data.includes('<meta name="robots" content="noindex">') ? false : true;
-      results.push({ url: link, indexed: 'Indexed' });
+      const isIndexed = !response.data.includes(
+        '<meta name="robots" content="noindex">'
+      );
+      results.push({
+        url: link,
+        indexed: isIndexed ? "Indexed" : "Not Indexed",
+      });
     } catch (error) {
-      results.push({ url: link, indexed: 'false' });
+      results.push({ url: link, indexed: "Error" });
     }
   }
 
   return results;
-
 }

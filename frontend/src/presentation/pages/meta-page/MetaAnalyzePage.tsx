@@ -38,9 +38,14 @@ function MetaAnalyzePage() {
             setAnalysisResult={setMetaAnalysisResult}
             endpoint="/api/analyze-meta"
           />
-          <PieCharts data={data} />
+
           {metaAnalysisResult && (
-            <MetaTable analysisResult={metaAnalysisResult} />
+            <>
+              <div className="table-charts">
+                <PieCharts data={data} />
+                <MetaTable analysisResult={metaAnalysisResult} />
+              </div>
+            </>
           )}
         </TabPanel>
 

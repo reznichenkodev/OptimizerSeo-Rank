@@ -4,6 +4,7 @@ import "./button.css";
 interface Props {
   type?: any;
   children?: React.ReactNode;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
