@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
+import { useLocation } from "react-router-dom";
 
 const items: MenuProps["items"] = [
   {
@@ -9,7 +10,7 @@ const items: MenuProps["items"] = [
         Meta
       </a>
     ),
-    key: "metaPage",
+    key: "meta",
   },
   {
     label: (
@@ -17,7 +18,7 @@ const items: MenuProps["items"] = [
         Link
       </a>
     ),
-    key: "linksPage",
+    key: "links",
   },
   {
     label: (
@@ -25,7 +26,7 @@ const items: MenuProps["items"] = [
         Index
       </a>
     ),
-    key: "indexedPage",
+    key: "indexed",
   },
   {
     label: (
@@ -33,12 +34,18 @@ const items: MenuProps["items"] = [
         Time
       </a>
     ),
-    key: "timePage",
+    key: "time",
   },
 ];
 
 const MainMenu: React.FC = () => {
-  const [current, setCurrent] = useState("metaPage");
+  const [current, setCurrent] = useState("meta-page");
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname.substring(1);
+    setCurrent(path);
+  }, [location]);
 
   const onClick: MenuProps["onClick"] = (e) => {
     // console.log("click ", e);

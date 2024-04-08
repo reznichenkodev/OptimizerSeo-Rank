@@ -1,17 +1,17 @@
-import LinkTable from "../../components/Table/link.tsx";
-import PieCharts from "../../components/PieGraph/pie-graph.tsx";
+import PieCharts from "../../../components/PieGraph/pie-graph.tsx";
 import React, { useState } from "react";
 import { Layout } from "antd";
-import MainMenu from "../../components/Menu/mainMenu.tsx";
-import ReqForm from "../../components/Forms/request-form.tsx";
+import MainMenu from "../../../components/Menu/mainMenu.tsx";
+import ReqForm from "../../../components/Forms/request-form.tsx";
+import RobotsTable from "../../../components/Table/robots.tsx";
 
-const LinkAnalyzePage: React.FC = () => {
+const IndexAnalyzePage: React.FC = () => {
   interface AnalysisResults {
-    links: any;
+    robots: any;
   }
 
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
-    links: undefined,
+    robots: undefined,
   });
 
   const data = [{ name: "Group A", value: 100 }];
@@ -22,13 +22,13 @@ const LinkAnalyzePage: React.FC = () => {
 
       <ReqForm
         setAnalysisResult={setAnalysisResults}
-        endpoint="/api/analyze-links"
+        endpoint="/api/analyze-robots"
       />
-      {analysisResults.links && (
+      {analysisResults.robots && (
         <>
           <div className="table-charts">
             <PieCharts data={data} />
-            <LinkTable analysisResult={analysisResults} />
+            <RobotsTable analysisResult={analysisResults} />
           </div>
         </>
       )}
@@ -36,4 +36,4 @@ const LinkAnalyzePage: React.FC = () => {
   );
 };
 
-export default LinkAnalyzePage;
+export default IndexAnalyzePage;

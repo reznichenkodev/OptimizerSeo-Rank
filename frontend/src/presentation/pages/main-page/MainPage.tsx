@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../components/Buttons/button.tsx";
 import { useNavigate } from "react-router-dom";
-import "../main-page/MainPage.css";
+import "./MainPage.css";
 
 import { Card, Space } from "antd";
 
@@ -27,7 +27,7 @@ const MainPage: React.FC = () => {
         <Space direction="horizontal" size={16}>
           <Card
             title="Мета-анализ"
-            extra={<a href="#">More</a>}
+            extra={<a href="./meta">More</a>}
             style={{ width: 300 }}
           >
             <p>
@@ -37,7 +37,7 @@ const MainPage: React.FC = () => {
           </Card>
           <Card
             title="Редиректы"
-            extra={<a href="#">More</a>}
+            extra={<a href="./link">More</a>}
             style={{ width: 300 }}
           >
             <p>
@@ -47,7 +47,7 @@ const MainPage: React.FC = () => {
           </Card>
           <Card
             title="Индексация"
-            extra={<a href="#">More</a>}
+            extra={<a href="./indexed">More</a>}
             style={{ width: 300 }}
           >
             <p>

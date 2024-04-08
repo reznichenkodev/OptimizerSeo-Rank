@@ -1,17 +1,18 @@
-import PieCharts from "../../components/PieGraph/pie-graph.tsx";
+import MetaTable from "../../../components/Table/meta.tsx";
+import PieCharts from "../../../components/PieGraph/pie-graph.tsx";
 import React, { useState } from "react";
 import { Layout } from "antd";
-import MainMenu from "../../components/Menu/mainMenu.tsx";
-import ReqForm from "../../components/Forms/request-form.tsx";
-import TimeAnalyze from "../../components/Table/time.tsx";
+import MainMenu from "../../../components/Menu/mainMenu.tsx";
+import ReqForm from "../../../components/Forms/request-form.tsx";
+import { Route } from "react-router-dom";
 
-const TimeAnalyzePage: React.FC = () => {
+const MetaAnalyzePage: React.FC = () => {
   interface AnalysisResults {
-    time: any;
+    meta: any;
   }
 
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
-    time: undefined,
+    meta: undefined,
   });
 
   const data = [{ name: "Group A", value: 100 }];
@@ -19,16 +20,16 @@ const TimeAnalyzePage: React.FC = () => {
   return (
     <Layout className="site-layout">
       <MainMenu />
-
       <ReqForm
         setAnalysisResult={setAnalysisResults}
-        endpoint="/api/analyze-time"
+        endpoint="/api/analyze-meta"
       />
+
       {analysisResults && (
         <>
           <div className="table-charts">
-            <TimeAnalyze analysisResult={analysisResults} />
             <PieCharts data={data} />
+            <MetaTable analysisResult={analysisResults} />
           </div>
         </>
       )}
@@ -36,4 +37,4 @@ const TimeAnalyzePage: React.FC = () => {
   );
 };
 
-export default TimeAnalyzePage;
+export default MetaAnalyzePage;

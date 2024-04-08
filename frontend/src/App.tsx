@@ -1,11 +1,11 @@
 import React from "react";
 import "../src/App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MetaAnalyzePage from "./presentation/pages/meta-page/MetaAnalyzePage.tsx";
+import TimeAnalyzePage from "./presentation/pages/analyze-pages/time/TimeAnalyzePage.tsx";
+import IndexAnalyzePage from "./presentation/pages/analyze-pages/indexed/IndexAnalyzePage.tsx";
+import LinkAnalyzePage from "./presentation/pages/analyze-pages/link/LinkAnalyzePage.tsx";
+import MetaAnalyzePage from "./presentation/pages/analyze-pages/meta/MetaAnalyzePage.tsx";
 import MainPage from "./presentation/pages/main-page/MainPage.tsx";
-import LinkAnalyzePage from "./presentation/pages/link-page/LinkAnalyzePage.tsx";
-import IndexAnalyzePage from "./presentation/pages/indexed-page/IndexAnalyzePage.tsx";
-import TimeAnalyzePage from "./presentation/pages/time-page/TimeAnalyzePage.tsx";
 
 function App() {
   return (
