@@ -27,7 +27,6 @@ const MetaTable = ({ analysisResult }) => {
 
   return (
     <div>
-      <h2>Meta Tags Analysis</h2>
       <table>
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>

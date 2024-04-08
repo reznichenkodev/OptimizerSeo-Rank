@@ -25,7 +25,6 @@ const RobotsTable = ({ analysisResult }) => {
 
   return (
     <div>
-      <h2>Robots Analysis</h2>
       <table>
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>
