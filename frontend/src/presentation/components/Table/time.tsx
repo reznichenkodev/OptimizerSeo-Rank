@@ -1,15 +1,23 @@
 import React from "react";
+import type { StatisticProps } from "antd";
+import { Col, Row, Statistic } from "antd";
 
-const TimeTable = ({ analysisResult }) => {
+const TimeAnalyze = ({ analysisResult }) => {
   if (!analysisResult) {
     return null;
   }
 
   return (
-    <div>
-      <p>Time taken to load page: {analysisResult.loadTime} second</p>
-    </div>
+    <Row gutter={16}>
+      <Col span={12}>
+        <Statistic
+          title="Time taken to load page:"
+          value={analysisResult.loadTime}
+          style={{ margin: "20px" }}
+        />
+      </Col>
+    </Row>
   );
 };
 
-export default TimeTable;
+export default TimeAnalyze;

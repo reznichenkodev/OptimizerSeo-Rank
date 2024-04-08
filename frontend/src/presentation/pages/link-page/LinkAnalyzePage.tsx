@@ -1,17 +1,17 @@
-import MetaTable from "../../components/Table/meta.tsx";
+import LinkTable from "../../components/Table/link.tsx";
 import PieCharts from "../../components/PieGraph/pie-graph.tsx";
 import React, { useState } from "react";
 import { Layout } from "antd";
 import MainMenu from "../../components/Menu/mainMenu.tsx";
 import ReqForm from "../../components/Forms/request-form.tsx";
 
-const MetaAnalyzePage: React.FC = () => {
+const LinkAnalyzePage: React.FC = () => {
   interface AnalysisResults {
-    meta: any;
+    links: any;
   }
 
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
-    meta: undefined,
+    links: undefined,
   });
 
   const data = [{ name: "Group A", value: 100 }];
@@ -19,16 +19,16 @@ const MetaAnalyzePage: React.FC = () => {
   return (
     <Layout className="site-layout">
       <MainMenu />
+
       <ReqForm
         setAnalysisResult={setAnalysisResults}
-        endpoint="/api/analyze-meta"
+        endpoint="/api/analyze-links"
       />
-
-      {analysisResults && (
+      {analysisResults.links && (
         <>
           <div className="table-charts">
             <PieCharts data={data} />
-            <MetaTable analysisResult={analysisResults} />
+            <LinkTable analysisResult={analysisResults} />
           </div>
         </>
       )}
@@ -36,4 +36,4 @@ const MetaAnalyzePage: React.FC = () => {
   );
 };
 
-export default MetaAnalyzePage;
+export default LinkAnalyzePage;

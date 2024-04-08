@@ -22,8 +22,6 @@ class AnalyzeLink {
 
       const analysisResult = { links: validLinks };
 
-      // console.log(analysisResult)
-
       res.json(analysisResult);
     } catch (error) {
       console.error(error);

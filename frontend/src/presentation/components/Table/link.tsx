@@ -1,36 +1,41 @@
 import React from "react";
+import { Table } from "antd";
 
 const LinkTable = ({ analysisResult }) => {
-  if (!analysisResult) {
-    return null;
+  // Проверяем, существует ли analysisResult и содержит ли он links
+  if (!analysisResult || !analysisResult.links) {
+    return null; // Если нет, возвращаем null или любой другой компонент-заглушку
   }
 
-  const renderTableRows = () => {
-    return analysisResult.links.map((link, index) => (
-      <tr key={index}>
-        <td>{link.url}</td>
-        <td>{link.redirectUrl}</td>
-        <td>{link.redirectType}</td>
-      </tr>
-    ));
-  };
+  const columns = [
+    {
+      title: "Url",
+      dataIndex: "url",
+      key: "url",
+    },
+    {
+      title: "RedirectUrl",
+      dataIndex: "redirectUrl",
+      key: "redirectUrl",
+    },
+    {
+      title: "Response",
+      dataIndex: "redirectType",
+      key: "redirectType",
+    },
+  ];
 
-  const renderTableHeader = () => {
-    return (
-      <tr>
-        <th>Url</th>
-        <th>RedirectUrl</th>
-        <th>Response</th>
-      </tr>
-    );
-  };
+  // Подготовка данных для таблицы
+  const data = analysisResult.links.map((link, index) => ({
+    key: index,
+    url: link.url,
+    redirectUrl: link.redirectUrl,
+    redirectType: link.redirectType,
+  }));
 
   return (
     <div>
-      <table>
-        <thead>{renderTableHeader()}</thead>
-        <tbody>{renderTableRows()}</tbody>
-      </table>
+      <Table columns={columns} dataSource={data} />
     </div>
   );
 };

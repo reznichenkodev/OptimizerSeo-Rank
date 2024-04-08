@@ -13,7 +13,6 @@ class AnalyzeTime {
         },
         stopTimer() {
           this.stop = Date.now();
-          const elapsed = (this.stop - this.start) / 1000;
         },
       };
 
@@ -27,7 +26,7 @@ class AnalyzeTime {
       const analysisResult = {
         loadTime: (analyzeTime.stop - analyzeTime.start) / 1000,
       };
-      // console.log(analysisResult)
+
       res.json(analysisResult);
     } catch (error) {
       console.error(error);

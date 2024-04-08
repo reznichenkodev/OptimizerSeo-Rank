@@ -1,36 +1,34 @@
 import React from "react";
+import { Table } from "antd";
 
 const MetaTable = ({ analysisResult }) => {
-  if (!analysisResult) {
-    return null;
+  if (!analysisResult || !analysisResult.metaTags) {
+    return null; // Если нет, возвращаем null или любой другой компонент-заглушку
   }
 
-  const renderTableRows = () => {
-    return analysisResult.metaTags.map((tag, index) => (
-      <tr key={index}>
-        <td>{tag.name}</td>
-        <td>{tag.content}</td>
-        <td>{tag.content ? tag.content.length : 0}</td>
-      </tr>
-    ));
-  };
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Content",
+      dataIndex: "content",
+      key: "content",
+    },
+  ];
 
-  const renderTableHeader = () => {
-    return (
-      <tr>
-        <th>Name</th>
-        <th>Content</th>
-        <th>Character Count</th>
-      </tr>
-    );
-  };
+  // Подготовка данных для таблицы
+  const data = analysisResult.metaTags.map((tag, index) => ({
+    key: index,
+    name: tag.name,
+    content: tag.content,
+  }));
 
   return (
     <div>
-      <table>
-        <thead>{renderTableHeader()}</thead>
-        <tbody>{renderTableRows()}</tbody>
-      </table>
+      <Table columns={columns} dataSource={data} />
     </div>
   );
 };

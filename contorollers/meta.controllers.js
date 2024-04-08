@@ -10,14 +10,15 @@ class AnalyzeMeta {
 
       const metaTags = [];
       $("meta").each((index, element) => {
+        console.log(element);
         const name = $(element).attr("name");
         const content = $(element).attr("content");
+        const namean = name + content;
         metaTags.push({ name, content });
       });
 
       const analysisResult = {
         metaTags,
-        characterCount: data.length,
       };
 
       // console.log(analysisResult);

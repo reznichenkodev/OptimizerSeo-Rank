@@ -22,8 +22,6 @@ class AnalyzeRobots {
 
       const analysisResult = { robots: validLinks };
 
-      // console.log(analysisResult);
-
       res.json(analysisResult);
     } catch (error) {
       console.error(error);
