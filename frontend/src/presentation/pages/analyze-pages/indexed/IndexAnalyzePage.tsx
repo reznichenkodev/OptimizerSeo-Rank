@@ -7,19 +7,18 @@ import RobotsTable from "../../../components/Table/robots.tsx";
 
 const IndexAnalyzePage: React.FC = () => {
   interface AnalysisResults {
-    robots: any;
+    robots: any; 
   }
 
+  const [current, setCurrent] = useState("indexed");
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
     robots: undefined,
   });
-
   const data = [{ name: "Group A", value: 100 }];
 
   return (
     <Layout className="site-layout">
-      <MainMenu />
-
+      <MainMenu current={current} setCurrent={setCurrent} />
       <ReqForm
         setAnalysisResult={setAnalysisResults}
         endpoint="/api/analyze-robots"

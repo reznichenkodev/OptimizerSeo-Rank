@@ -9,16 +9,17 @@ const LinkAnalyzePage: React.FC = () => {
   interface AnalysisResults {
     links: any;
   }
-
+  const [current, setCurrent] = useState("links");
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
     links: undefined,
   });
 
+  console.log(current)
   const data = [{ name: "Group A", value: 100 }];
 
   return (
     <Layout className="site-layout">
-      <MainMenu />
+      <MainMenu current={current} setCurrent={setCurrent} />
       <ReqForm
         setAnalysisResult={setAnalysisResults}
         endpoint="/api/analyze-links"

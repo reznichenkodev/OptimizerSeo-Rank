@@ -10,6 +10,7 @@ const TimeAnalyzePage: React.FC = () => {
     time: any;
   }
 
+  const [current, setCurrent] = useState("time");
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
     time: undefined,
   });
@@ -18,7 +19,7 @@ const TimeAnalyzePage: React.FC = () => {
 
   return (
     <Layout className="site-layout">
-      <MainMenu />
+      <MainMenu current={current} setCurrent={setCurrent} />
       <ReqForm
         setAnalysisResult={setAnalysisResults}
         endpoint="/api/analyze-time"

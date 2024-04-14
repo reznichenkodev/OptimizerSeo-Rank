@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import { Layout } from "antd";
 import MainMenu from "../../../components/Menu/mainMenu.tsx";
 import ReqForm from "../../../components/Forms/request-form.tsx";
-import { Route } from "react-router-dom";
 
 const MetaAnalyzePage: React.FC = () => {
   interface AnalysisResults {
     meta: any;
   }
-
+  const [current, setCurrent] = useState("meta");
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults>({
     meta: undefined,
   });
@@ -19,12 +18,11 @@ const MetaAnalyzePage: React.FC = () => {
 
   return (
     <Layout className="site-layout">
-      <MainMenu />
+      <MainMenu current={current} setCurrent={setCurrent} />
       <ReqForm
         setAnalysisResult={setAnalysisResults}
         endpoint="/api/analyze-meta"
       />
-
       {analysisResults && (
         <>
           <div className="table-charts">

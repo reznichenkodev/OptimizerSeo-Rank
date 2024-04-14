@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import { useLocation } from "react-router-dom";
+
 
 const items: MenuProps["items"] = [
   {
     label: (
-      <a href="./meta" target="_self" rel="noopener noreferrer">
+      <a href="./meta"  rel="noopener noreferrer">
         Meta
       </a>
     ),
@@ -14,7 +14,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="./links" target="_self" rel="noopener noreferrer">
+      <a href="./links"  rel="noopener noreferrer">
         Link
       </a>
     ),
@@ -22,7 +22,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="./indexed" target="_self" rel="noopener noreferrer">
+      <a href="./indexed"  rel="noopener noreferrer">
         Index
       </a>
     ),
@@ -30,7 +30,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="./time" target="_self" rel="noopener noreferrer">
+      <a href="./time" rel="noopener noreferrer">
         Time
       </a>
     ),
@@ -38,18 +38,10 @@ const items: MenuProps["items"] = [
   },
 ];
 
-const MainMenu: React.FC = () => {
-  const [current, setCurrent] = useState("meta-page");
-  const location = useLocation();
 
-  useEffect(() => {
-    const path = location.pathname.substring(1);
-    setCurrent(path);
-  }, [location]);
-
+const MainMenu = ({ current, setCurrent }) => {
   const onClick: MenuProps["onClick"] = (e) => {
-    // console.log("click ", e);
-    setCurrent(e.key);
+     setCurrent(e.key);
   };
 
   return (
