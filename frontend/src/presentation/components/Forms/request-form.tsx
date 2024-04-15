@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { regexpURL } from "../../utils/regexpURL.tsx";
-import Button from "../Buttons/button.tsx";
+import { Button, Form, Input } from "antd";
 import Loading from "../Loading/loading.tsx";
 import "../Forms/form.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,9 +11,7 @@ const ReqForm = ({ setAnalysisResult, endpoint }) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!regexpURL(url)) {
       toast.error("URL validation error!");
       return;
@@ -33,20 +31,23 @@ const ReqForm = ({ setAnalysisResult, endpoint }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Enter URL:
-          <input
+      <Form layout="vertical" onFinish={handleSubmit} className="form">
+        <Form.Item
+          name="URL"
+          label="Enter URL:"
+          rules={[{ required: true }, { type: "url", warningOnly: true }]}
+        >
+          <Input
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-        </label>
-        <Button type="submit" disabled={isLoading}>
+        </Form.Item>
+        <Button type="primary" htmlType="submit" disabled={isLoading}>
           Анализ
         </Button>
         <ToastContainer />
-      </form>
+      </Form>
       {isLoading && <Loading />}
     </>
   );
