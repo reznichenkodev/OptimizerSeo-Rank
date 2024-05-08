@@ -2,11 +2,10 @@ import React from "react";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 
-
 const items: MenuProps["items"] = [
   {
     label: (
-      <a href="./meta"  rel="noopener noreferrer">
+      <a href="./meta" rel="noopener noreferrer">
         Meta
       </a>
     ),
@@ -14,7 +13,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="./links"  rel="noopener noreferrer">
+      <a href="./links" rel="noopener noreferrer">
         Link
       </a>
     ),
@@ -22,7 +21,7 @@ const items: MenuProps["items"] = [
   },
   {
     label: (
-      <a href="./indexed"  rel="noopener noreferrer">
+      <a href="./indexed" rel="noopener noreferrer">
         Index
       </a>
     ),
@@ -38,10 +37,9 @@ const items: MenuProps["items"] = [
   },
 ];
 
-
 const MainMenu = ({ current, setCurrent }) => {
   const onClick: MenuProps["onClick"] = (e) => {
-     setCurrent(e.key);
+    setCurrent(e.key);
   };
 
   return (
