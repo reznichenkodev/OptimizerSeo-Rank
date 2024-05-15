@@ -17,5 +17,8 @@
     "express": "^4.18.2",
     "node-fetch": "^3.3.2",
     "react-tabs": "^6.0.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^9.1.0"
   }
 }

@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/meta");
+    navigate("./analyze-page");
   };
 
   return (
@@ -27,8 +27,8 @@ const MainPage: React.FC = () => {
         <Space direction="horizontal" size={16}>
           <Card
             title="Мета-анализ"
-            extra={<a href="./meta">More</a>}
-            style={{ width: 300 }}
+            extra={<a href="./analyze-page">More</a>}
+            style={{ width: 300, height: 200 }}
           >
             <p>
               Это позволяет легко проверить и оптимизировать мета-информацию для
@@ -37,8 +37,8 @@ const MainPage: React.FC = () => {
           </Card>
           <Card
             title="Редиректы"
-            extra={<a href="./link">More</a>}
-            style={{ width: 300 }}
+            extra={<a href="./analyze-page">More</a>}
+            style={{ width: 300, height: 200 }}
           >
             <p>
               Это важно для обеспечения правильной навигации и предотвращения
@@ -47,12 +47,21 @@ const MainPage: React.FC = () => {
           </Card>
           <Card
             title="Индексация"
-            extra={<a href="./indexed">More</a>}
-            style={{ width: 300 }}
+            extra={<a href="./analyze-page">More</a>}
+            style={{ width: 300, height: 200 }}
           >
             <p>
               Таким образом, можно эффективно контролировать, какие части
               контента подлежат индексации поисковыми системами.
+            </p>
+          </Card>
+          <Card
+            title="Время"
+            extra={<a href="./analyze-page">More</a>}
+            style={{ width: 300, height: 200 }}
+          >
+            <p>
+              Время за которое страница прогружается на клиенте.
             </p>
           </Card>
         </Space>
