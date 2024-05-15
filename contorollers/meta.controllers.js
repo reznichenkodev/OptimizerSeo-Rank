@@ -12,16 +12,15 @@ class AnalyzeMeta {
       $("meta").each((index, element) => {
         console.log(element);
         const name = $(element).attr("name");
+        const property = $(element).attr("property");
         const content = $(element).attr("content");
-        const namean = name + content;
-        metaTags.push({ name, content });
+        metaTags.push({ name, property, content });
       });
 
       const analysisResult = {
         metaTags,
       };
 
-      // console.log(analysisResult);
       res.json(analysisResult);
     } catch (error) {
       console.error(error);

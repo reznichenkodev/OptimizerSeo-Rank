@@ -60,9 +60,7 @@ const MainPage: React.FC = () => {
             extra={<a href="./analyze-page">More</a>}
             style={{ width: 300, height: 200 }}
           >
-            <p>
-              Время за которое страница прогружается на клиенте.
-            </p>
+            <p>Время за которое страница прогружается на клиенте.</p>
           </Card>
         </Space>
       </div>

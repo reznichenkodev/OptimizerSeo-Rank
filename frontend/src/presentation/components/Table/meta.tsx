@@ -3,7 +3,7 @@ import { Table } from "antd";
 
 const MetaTable = ({ analysisResult }) => {
   if (!analysisResult || !analysisResult.metaTags) {
-    return null; // Если нет, возвращаем null или любой другой компонент-заглушку
+    return null;
   }
 
   const columns = [
@@ -13,16 +13,21 @@ const MetaTable = ({ analysisResult }) => {
       key: "name",
     },
     {
+      title: "property",
+      dataIndex: "property",
+      key: "property",
+    },
+    {
       title: "Content",
       dataIndex: "content",
       key: "content",
     },
   ];
 
-  // Подготовка данных для таблицы
   const data = analysisResult.metaTags.map((tag, index) => ({
     key: index,
     name: tag.name,
+    property: tag.property,
     content: tag.content,
   }));
 

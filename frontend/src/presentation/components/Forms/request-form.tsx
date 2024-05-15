@@ -11,7 +11,6 @@ const ReqForm = ({ setAnalysisResult }) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-
   const handleSubmit = async () => {
     if (!regexpURL(url)) {
       toast.error("URL validation error!");
@@ -19,21 +18,28 @@ const ReqForm = ({ setAnalysisResult }) => {
     }
     setIsLoading(true);
     try {
-      const endpoints = ['/api/analyze-meta', '/api/analyze-time', '/api/analyze-links', '/api/analyze-robots'];
+      const endpoints = [
+        "/api/analyze-meta",
+        "/api/analyze-time",
+        "/api/analyze-links",
+        "/api/analyze-robots",
+      ];
 
       async function sendRequestsToMultipleEndpoints() {
         let allResults: Array<{ endpoint: string; result: any }> = [];
         for (let endpoint of endpoints) {
-          const response = await axios.post(`http://localhost:3001${endpoint}`, {
-            url,
-          });
+          const response = await axios.post(
+            `http://localhost:3001${endpoint}`,
+            {
+              url,
+            }
+          );
           allResults.push({ endpoint, result: response.data });
         }
         setAnalysisResult(allResults);
       }
       await sendRequestsToMultipleEndpoints();
-    }
-    catch (error) {
+    } catch (error) {
       toast.error("Server error!");
     } finally {
       setIsLoading(false);
